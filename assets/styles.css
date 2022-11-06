@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img{
+    max-width: 100%;
+    display: block;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.navbar{
+    color: #E5E5E5;
+    height: 50px;
+    padding: 0 1rem;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index:4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar__options{
+    display: flex;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo__img{
+    width: 70px;
+    height: 50px;
+}
+.bx-sun{
+    display: none;
+}
+.contentClothes{
+    background-color: blue;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.clothes{
+    background-color: red;
+    padding: 1rem;
+    border-radius: 1rem;
+
+}
+.btn{
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    border:none;
+
+
+}
+.btn__add{
+    background-color: antiquewhite;
+}
+
+
+
+
+
+.menu {
+    position:fixed;
+    color: var(--white);
+    top: 1rem;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transform: translateX(-250%);
+    transition: transform 0.5s;
+}
+.menu-show {
+    transform: translateX(-100%);
+}
+.bx-menu {
+    display: inline;
+    position:absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    
+}
+
+@media (min-width: 800px) {
+    .bx-menu {
+        display: none;
+    }
+    .menu {
+        position: fixed;
+        min-width: 900px;
+        height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        transform: translateX(0);
+        gap: 1rem;
+    }
+}
