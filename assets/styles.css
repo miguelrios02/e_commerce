@@ -90,7 +90,7 @@ transition: transform 0.5s;
 .menu {
     position:fixed;
     background-color: white;
-    color: var(red);
+    color: var(--background);
     width: 50%;
     height: 100vh;
     display: flex;
@@ -113,12 +113,19 @@ transition: transform 0.5s;
 background-color: red;
 height: 80%;
 padding: 1rem;
+
+display: flex;
+flex-direction: column;
+gap: 1rem;
+overflow-y: scroll;
+
 }
 .contentCartShop__total{
 background-color: green;
 height: 20%;
 padding: 1rem;
 }
+
 
 @media (min-width: 750px) {
     .bx-grid-alt {
