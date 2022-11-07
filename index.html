@@ -20,20 +20,67 @@
                 <p class="store">STORE</p> 
             </a>
             <div class="menu">
-                <p class="Home">Home</p>
-                <div class="Products">Products</div>
+                <a href="#home" class="home">Home</a>
+                <a href="#shop" class="Products">Products</p></a>
+            </div>
+            <div class="menu2">
+                <a href="#home" class="home">Home</a>
+                <a href="#shop" class="Products">Products</p></a>
             </div>
         </div>
         <div class="navbar__icons">
-            <i class='bx bx-moon'></i>
-            <i class='bx bx-sun' ></i>
-            <i class='bx bx-shopping-bag'></i>
+            <div class="toggle__light">
+                <i class='bx bx-moon'></i>
+            </div>
+            <div class="bag">
+                <i class='bx bx-shopping-bag'></i>
+                <div class="container">
+                    <p>4</p>
+                </div>
+            </div>
             <i class='bx bx-grid-alt'></i>
         </div>
     </nav>
-    <div class="contentClothes mt__nav"></div>
+    <div class="collections" id ="home">
+        <div class="collections__new">
+            <div class="title__home">
+                <h3 >New Sweatshirt</h3>
+                <h2 >COLLECTIONS 2022</h2>
+            </div>
+            <P class="information">Latest arrival of the new Hanes Midweight Crewneck 
+                sweatshirt imported from the 2022 series, with a modern design. </P>
+            <p class="collection__price">$14.00</p>
+            <div class="collection__bottoms">
+                <button class="button__Discover"><strong>Discover</strong> </button>
+                <button class="button__ADD"><strong> ADD TO CART</strong></button>
+            </div>
+        </div>
+        <div class="img__collections">
+            <img src="./assets/img/home.png" alt="home" >
+        </div>
+    </div>
+    <ul class="products__list">
+        <li class="products__item">
+            <h2 class="products__title">Show All</h2>
+            <span class="products__stock">show all propucts</span>
+        </li>
+        <li class="products__item">
+            <h2 class="products__title">Hoodies</h2>
+            <span class="products__stock">3 products</span>
+        </li>
+        <li class="products__item">
+            <h2 class="products__title"> Shirts</h2>
+            <span class="products__stock">4 products</span>
+        </li>
+        <li class="products__item">
+            <h2 class="products__title">Sweatshirts</h2>
+            <span class="products__stock">4 products</span>
+        </li>
+    </ul>
+    <div class="contentClothes mt__nav" id="shop">
+    </div>
 
-    <div class="contentCartShop" id="home">
+    <div class="contentCartShop" id="shop">
         <div class="contentCartShop__items"></div>
         <div class="contentCartShop__total"></div>
     </div>

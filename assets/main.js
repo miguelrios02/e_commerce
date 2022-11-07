@@ -26,13 +26,28 @@ const clothes =[
 const iconMenu = document.querySelector(".bx-grid-alt");
 const menu = document.querySelector(".menu");
 const contentCartShopItems = document.querySelector(".contentCartShop__items");
-
+const bxMoon = document.querySelector(".bx-sun");
+const toggleLight =document.querySelector(".toggle__light");
+const contentClothes = document.querySelector(".contentClothes");
 
 iconMenu.addEventListener("click", function () {
     console.log(menu.classList.toggle("menu-show"));
 });
-
-const contentClothes = document.querySelector(".contentClothes");
+const navbarIcons= document.querySelector(".navbar__icons");
+    navbarIcons.addEventListener("click",(e)=>{
+   if(e.target.classList.contains("bx-moon")){
+    let html=""
+    html=`
+    <i class='bx bx-sun'></i>`
+    toggleLight.innerHTML= html
+   }
+   if( e.target.classList.contains("bx-sun")){
+    let html=""
+    html=`
+    <i class='bx bx-moon'></i>`
+    toggleLight.innerHTML= html
+   }
+});
 
 let objCartShop={};
 
@@ -45,9 +60,10 @@ function printClothes(){
             <img src="${urlImage}" alt="${name}">
         </div>
         <div class="clothes__body">
-            <h3>${name}</h3>
-            <p><span>$${price}</span> - stock:${stock} </p>
+            <p class="clothes__price"><strong>$${price}</strong></p> 
+            <p class="clothes__stock" > <strong>| - stock:${stock}</strong></p>
         </div>
+        <h3>${name}</h3>
         <div class="clothes__options">
             <button class="btn btn__add" id="${id}">Agregar</button>
         </div>
@@ -122,7 +138,7 @@ contentCartShopItems.addEventListener("click",(m)=>{
     printClothesInCart();
     })
 
-const icontCart = document.querySelector(".bx-shopping-bag");
+const icontCart = document.querySelector(".bag");
 const contentCartShop = document.querySelector(".contentCartShop");
 
 
