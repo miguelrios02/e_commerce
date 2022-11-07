@@ -23,15 +23,16 @@ const clothes =[
 ]
 
 
-const iconMenu = document.querySelector(".bx-menu");
+const iconMenu = document.querySelector(".bx-grid-alt");
 const menu = document.querySelector(".menu");
 
 iconMenu.addEventListener("click", function () {
     console.log(menu.classList.toggle("menu-show"));
 });
 
-
 const contentClothes = document.querySelector(".contentClothes");
+
+
 
 let html=""
 clothes.forEach(({id, name, price, stock, urlImage})=>{
@@ -45,7 +46,7 @@ clothes.forEach(({id, name, price, stock, urlImage})=>{
             <p><span>$${price}</span> - stock:${stock} </p>
         </div>
         <div class="clothes__options">
-            <button class="btn btn__add" id="">Agregar</button>
+            <button class="btn btn__add" id="${id}">Agregar</button>
         </div>
 </div>`
 });
@@ -53,5 +54,9 @@ clothes.forEach(({id, name, price, stock, urlImage})=>{
 contentClothes.innerHTML= html
 
 console.log(contentClothes);
+const icontCart = document.querySelector(".bx-shopping-bag");
+const contentCartShop = document.querySelector(".contentCartShop");
 
-
+icontCart.addEventListener("click",()=>{
+    contentCartShop.classList.toggle("contentCartShop__show")
+})
