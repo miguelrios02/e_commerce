@@ -34,9 +34,7 @@
             </div>
             <div class="bag">
                 <i class='bx bx-shopping-bag'></i>
-                <div class="container">
-                    <p>4</p>
-                </div>
+                <span class="count__bag">0</span>
             </div>
             <i class='bx bx-grid-alt'></i>
         </div>
@@ -59,20 +57,22 @@
             <img src="./assets/img/home.png" alt="home" >
         </div>
     </div>
+
+
     <ul class="products__list">
-        <li class="products__item">
+        <li data-filter="all" class="products__item">
             <h2 class="products__title">Show All</h2>
             <span class="products__stock">show all propucts</span>
         </li>
-        <li class="products__item">
+        <li data-filter=".Hoodies" class="products__item">
             <h2 class="products__title">Hoodies</h2>
             <span class="products__stock">3 products</span>
         </li>
-        <li class="products__item">
+        <li data-filter=".Shirts"  class="products__item">
             <h2 class="products__title"> Shirts</h2>
             <span class="products__stock">4 products</span>
         </li>
-        <li class="products__item">
+        <li data-filter=".Sweatshirts" class="products__item">
             <h2 class="products__title">Sweatshirts</h2>
             <span class="products__stock">4 products</span>
         </li>
@@ -84,6 +84,83 @@
         <div class="contentCartShop__items"></div>
         <div class="contentCartShop__total"></div>
     </div>
-    <script src="./assets/main.js"></script>
+
+    <footer class="footer section">
+        <div class="footer__container container grid">
+          <div class="footer__content">
+            <h3 class="footer__title">Our information</h3>
+    
+            <ul class="footer__list">
+              <li>Toluca - México</li>
+            </ul>
+          </div>
+          <div class="footer__content">
+            <h3 class="footer__title">About Us</h3>
+    
+            <ul class="footer__links">
+              <li>
+                <a href="#" class="footer__link">Support Center</a>
+              </li>
+              <li>
+                <a href="#" class="footer__link">Customer Support</a>
+              </li>
+              <li>
+                <a href="#" class="footer__link">About Us</a>
+              </li>
+              <li>
+                <a href="#" class="footer__link">Copy Right</a>
+              </li>
+            </ul>
+          </div>
+    
+          <div class="footer__content">
+            <h3 class="footer__title">Product</h3>
+    
+            <ul class="footer__links">
+              <li>
+                <a href="#" class="footer__link">Hoodies</a>
+              </li>
+              <li>
+                <a href="#" class="footer__link">Shirts</a>
+              </li>
+              <li>
+                <a href="#" class="footer__link">Sweatshirts</a>
+              </li>
+            </ul>
+          </div>
+    
+          <div class="footer__content">
+            <h3 class="footer__title">Social</h3>
+    
+            <ul class="footer__social">
+              <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                <i class='bx bxl-facebook'></i>
+              </a>
+    
+              <a href="https://twitter.com/" target="_blank" class="footer__social-link">
+                <i class='bx bxl-twitter'></i>
+              </a>
+    
+              <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
+                <i class='bx bxl-instagram'></i>
+              </a>
+            </ul>
+          </div>
+        </div>
+        <span class="footer__copy">&#169; ACADEMLO. All rigths reserved</span>
+      </footer>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"
+        integrity="sha512-nKZDK+ztK6Ug+2B6DZx+QtgeyAmo9YThZob8O3xgjqhw2IVQdAITFasl/jqbyDwclMkLXFOZRiytnUrXk/PM6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+      </script>
+    <script src="./assets/main.js" ></script>
+    <script>mixitup(".contentClothes",{
+        selectors:{
+            target:".clothes"
+        },
+        animation:{
+            duration:300
+        }
+    }).filter("all")</script>
 </body>
 </html>

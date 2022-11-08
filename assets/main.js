@@ -1,3 +1,4 @@
+
 const clothes =[
     {
         id:0,
@@ -18,7 +19,7 @@ const clothes =[
         name: "Sweatshirts",
         price: 1300,
         stock:2,
-        urlImage:"./assets/img/featured3.png"
+        urlImage:"./assets/img/featured3.png",
     }
 ]
 
@@ -55,10 +56,11 @@ function printClothes(){
     let html="";
     clothes.forEach(({id, name, price, stock, urlImage})=>{
     html +=`
-   <div class="clothes">
-        <div class="clothes__img">
-            <img src="${urlImage}" alt="${name}">
-        </div>
+    <div class="clothes ${name}" >
+    <div class="clothes__img">
+        <img src="${urlImage}" alt="${name}">
+    </div>
+    <div class="clothes__descripcion">
         <div class="clothes__body">
             <p class="clothes__price"><strong>$${price}</strong></p> 
             <p class="clothes__stock" > <strong>| - stock:${stock}</strong></p>
@@ -67,12 +69,14 @@ function printClothes(){
         <div class="clothes__options">
             <button class="btn btn__add" id="${id}">Agregar</button>
         </div>
-</div>`
+     </div>   
+    </div>`
 contentClothes.innerHTML= html
 });
 
 }
 printClothes();
+
 
 function printClothesInCart() {
     let html = "";
@@ -123,6 +127,9 @@ contentCartShopItems.addEventListener("click",(m)=>{
         if(objCartShop[idClothe].amo<objCartShop[idClothe].stock){
             objCartShop[idClothe].amo++;
         }
+        if(objCartShop[idClothe].amo==objCartShop[idClothe].stock){
+            alert("no hay mas elementos en el carrito")
+        }
         
     }
     if (m.target.classList.contains("btn__rest")) {
@@ -133,7 +140,8 @@ contentCartShopItems.addEventListener("click",(m)=>{
     }
     if (m.target.classList.contains("btn__del")) {
         const idClothe = Number(m.target.id)
-        delete objCartShop[idClothe];
+        const op =confirm("seguro que quieres eliminar?")
+        if(op)delete objCartShop[idClothe];
     }
     printClothesInCart();
     })

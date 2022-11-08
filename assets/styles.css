@@ -3,6 +3,7 @@
    font-family:'Roboto', sans-serif;
  --background:#E6E6E6;
  --first-color: hsl(354, 78%, 60%);
+ --background-2:hsl(206, 4%, 97%);
  --secoud-color: #BFBFBF;
  --third-color:#2B2B2B;
  --letras:#595959;
@@ -28,6 +29,7 @@ a {
 }
 .navbar__icons{
     display: flex;
+    align-items: center;
 }
 
 .navbar{
@@ -67,8 +69,11 @@ a {
 }
 .clothes{
     background-color:var(--background);
-    padding: 1rem;
     border-radius: 1rem;
+}
+.clothes__descripcion{
+    background-color:white;
+    padding: 1rem;
 }
 .btn{
     padding: 1rem;
@@ -134,19 +139,24 @@ background-color: green;
 height: 20%;
 padding: 1rem;
 }
-.container{
-    display:flex;
-    font-size: 10px;
-    background-color: red;
-    border-radius: 100%;
+.bag{
+    position: relative;
+    font-size: 16px;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.count__bag{
+    background-color: black;
+    color: white;
     position: absolute;
-    margin: 0;
-    top:15px;
-    padding-left: 10px;
-    z-index: 2;
-    justify-content: center;
-    align-items: center;
-    
+    top:0;
+    right: 0;
+    font-size: 12px;
+    line-height: 1;
+    padding: 2px 4px;
+    border-radius: 20px;
+  
 }
 
 .menu2{
@@ -218,9 +228,7 @@ padding: 1rem;
     cursor: pointer;
     color:var(--letras);
 }
-.bag{
-    cursor: pointer;
-}
+
 .toggle__light{
     cursor: pointer;
 }
