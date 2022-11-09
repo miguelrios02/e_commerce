@@ -28,7 +28,7 @@ window.addEventListener("load",function (){
     
     setTimeout(()=>{
         loading.style.display="none";
-    },1000);
+    },1500);
 })
 
 const iconMenu = document.querySelector(".bx-grid-alt");
