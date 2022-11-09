@@ -11,6 +11,7 @@
     font-size: 16px; 
     font-weight:400;
 }
+
 ul {
     list-style: none;
 }
@@ -31,7 +32,37 @@ a {
     display: flex;
     align-items: center;
 }
+.loading{
+    position:fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    overflow: hidden;
+    z-index: 20; 
+}
 
+.load{
+
+    padding: auto;
+    margin: auto;
+    width:100px;
+    height: 100px;
+    animation: animationLoad infinite 2s;
+    z-index: 21;
+}
+@keyframes animationLoad{
+    0%{
+        transform: translateY(20px);
+    }
+    50%{
+        transform: translateY(0);
+    }
+    100%{
+        transform: translateY(20px);
+    }
+}
 .navbar{
     background-color: white;
     height: 50px;
