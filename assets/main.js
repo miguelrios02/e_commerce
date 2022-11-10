@@ -28,7 +28,7 @@ window.addEventListener("load",function (){
     
     setTimeout(()=>{
         loading.style.display="none";
-    },1);
+    },2500);
 })
 
 const iconMenu = document.querySelector(".bx-grid-alt");
@@ -100,7 +100,7 @@ function printClothes(){
     clothes.forEach(({id, name, price, stock, urlImage})=>{
     const btnBuy =stock
     ?`<button class="btn__add button__plus" id="${id}">+</button>`
-    :`<button class="btn">No disponible</button>`;
+    :`<h3 class="btn2">No disponible</h3>`;
     html +=`
     <div class="clothes ${name}" >
         <div class="clothes__img">

@@ -325,8 +325,14 @@ button:hover{
 .img__collections{
     order: 1;
     background-color:var(--first-color);
-    top: 0;
-    right: 0;
+    display: flex;
+    justify-content: center;
+    width: 258px;
+    height: 430px;
+    padding-bottom: 1rem;
+    align-items: flex-end;
+    justify-self: flex-end;
+    transform: translate(2rem,-5rem);
 }
 .collection__bottoms{
     display: block;
@@ -455,5 +461,22 @@ li{
     .contentCartShop{ 
         width: 50%;
         }
+    .img__collections{
+            width: 358px;
+            height: 430px;
+            
+    }
 }
-
+@media (min-width:1000px) {
+    .img__collections{
+        width: 458px;
+        height: 490px;
+        
+}
+}
+@media (max-width:612px) {
+    .img__collections{
+        order: 0;
+        
+}
+}
