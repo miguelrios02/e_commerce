@@ -11,9 +11,28 @@
  --foot:#8c8c8c;
  --white:white; 
  --whiteLight:#fafafa;
+ --body-color:hsl(206,4%,97%);
+ --bg: #ffffff;
+ --color: #030c17;
+ 
  
     font-size: 16px; 
     font-weight:400;
+}
+
+body.darkmode {
+    background-color: var(--color);
+    color: var(--bg);
+    
+}
+
+.bx{
+    cursor: pointer;
+}
+
+.cart__item{
+    display: flex;
+    justify-content: space-between;
 }
 
 ul {
@@ -28,6 +47,7 @@ ul {
 body{
     max-width: 1080px;
     margin: auto;
+    background-color: var(--bg);
 }
 img{
     max-width: 100%;
@@ -51,7 +71,60 @@ a {
     overflow: hidden;
     z-index: 20; 
 }
+button{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+.button{
+    display: inline-block;
+    padding: 1.25rem 2rem;
+    transition: 0.3s;
+}
+button:hover{
+    background-color: var(--first-color);
+}
+.clothes__options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+.btn2{
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    border:none;
+}
+.cart__container{
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    min-width: 200px;
+}
+.btn{
+    width: 26px;
+    height: 26px;
+    background-color: white;
+    border-radius: .5px;
+    font-weight: bold;
+    border:1px solid var(--secoud-color);
 
+}
+.button__plus{
+    font-size: 1.5rem;
+    width: 3rem;
+    border-radius: 50%;
+    display: flex;
+    position: absolute;;
+    background-color:var(--body-color);
+    padding-left:1rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    right:1rem;
+    top:-1.5rem;
+}
 .load{
     display: block;
     padding-top:25%;
@@ -73,7 +146,6 @@ a {
     }
 }
 .navbar{
-    background-color: white;
     height: 50px;
     padding: 0 1rem;
     position: fixed;
@@ -86,6 +158,7 @@ a {
     align-items: center;
     font-size: 20px;
 }
+
 .navbar__options{
     display: flex;
 }
@@ -100,11 +173,17 @@ a {
 }
 .contentClothes{
     max-width: 800px;
-    background-color: white;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
     gap: 1.5rem;
+
+}
+.clothes__img-cart{
+    display: flex;
+    align-items: center;
+    max-width: 80px;
+    border: 1px solid var(--secoud-color);
 
 }
 .clothes{
@@ -115,31 +194,39 @@ a {
     max-width: 300px;
     box-shadow: 0px 0px 5px 1px #E6E6E6;
 }
-.clothes__descripcion{
+.clothes__cart{
+    display: flex;
+    flex-direction: row;
     background-color:white;
+    max-width: 300px;
+}
+.clothes__descripcion{
+    position: relative;
+    background-color:white;
+    color: black;
     padding: 1rem;
+    height: 90%;
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    
 }
-.btn{
-    padding: 1rem;
-    border-radius: 5px;
-    font-weight: bold;
-    border:none;
+.clothes__body{
+    display: flex;
 }
-.btn__add{
-    background-color: antiquewhite;
-}
+
 .mt__nav{
     margin-top: 60px;
 }
 .contentCartShop{
-background-color:white;
-width: 50%;
-height: 100vh;
-position: fixed;
-top: 50px;
-right:0;
-transform: translateX(100%);
-transition: transform 0.5s;
+    background-color:white;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 50px;
+    right:0;
+    transform: translateX(100%);
+    transition: transform 0.5s;
+    overflow-y: scroll;
 }
 .contentCartShop__show {
     transform: translateX(0);
@@ -147,7 +234,7 @@ transition: transform 0.5s;
 .menu {
     position:fixed;
     background-color: white;
-    color: var(--background);
+    color:black;
     width: 50%;
     height: 100vh;
     display: flex;
@@ -166,20 +253,23 @@ transition: transform 0.5s;
     cursor: pointer;
     
 }
-.contentCartShop__items{
-background-color:var(--white);
-height: 80%;
-padding: 1rem;
-display: flex;
-flex-direction: column;
-gap: 1rem;
-overflow-y: scroll;
+.contentCartShop__items{   
+    background-color:var(--white);
+    height: 70%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    
 }
 
 .contentCartShop__total{
-background-color:var(--whiteLight);
-height: 20%;
-padding: 1rem;
+    background-color:var(--whiteLight);
+    height: 30%;;
+    padding: 1rem;
+    
 }
 .bag{
     position: relative;
@@ -187,7 +277,14 @@ padding: 1rem;
     padding: 6px;
     cursor: pointer;
 }
-
+.btn__checkout{
+    display: flex;
+    justify-content:flex-end;
+    margin: 1rem;
+}
+.bxs-check-shield{
+    font-size: 1rem;
+}
 .count__bag{
     background-color: black;
     color: white;
@@ -276,7 +373,10 @@ padding: 1rem;
 .toggle__light{
     cursor: pointer;
 }
-.clothes__body{
+.cart__subtotal{
+    color: var(--first-color);
+}
+.cart__stock-price{
     display: flex;
 }
 .clothes__price{
@@ -287,9 +387,18 @@ padding: 1rem;
     color: var(--letras);
     font-weight:600px;
 }
+.cart__price{
+    color:var(--first-color);
+}
+
+.bx-trash-alt{
+    color: var(--first-color);
+    padding-left: 2rem;
+}
 .footer{
     margin-top:5rem ;
     background-color: var(--background);
+    color:black;
     padding: 1.5rem;  
 }
 .footer__container{
@@ -309,7 +418,7 @@ padding: 1rem;
 li{
     padding-bottom: 0.6rem;
 }
-.footer__copy{
+.github__link{
     display: flex;
     justify-content: center;
     height:60px;
@@ -317,16 +426,13 @@ li{
     color: var(--foot);
 }
 
-
-
-
-
-
-
-
-
-
-
+.cart__title{
+    text-align: center;
+    padding: 3rem;
+}
+.cart__empty{
+    text-align: center;
+}
 
 @media (min-width: 750px) {
     .bx-grid-alt {
@@ -342,4 +448,12 @@ li{
         align-items: center;
 
     }
+    body{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .contentCartShop{ 
+        width: 50%;
+        }
 }
+

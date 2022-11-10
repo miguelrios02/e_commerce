@@ -3,22 +3,22 @@ let clothes =[
     {
         id:0,
         name: "Hoodies",
-        price: 1200,
+        price: 12.00,
         stock:5,
         urlImage:"./assets/img/featured1.png"
     },
     {
         id:1,
         name: "Shirts",
-        price: 1009,
-        stock:7,
+        price: 24.00,
+        stock:14,
         urlImage:"./assets/img/featured2.png"
     },
     {
         id:2,
         name: "Sweatshirts",
-        price: 1300,
-        stock:2,
+        price: 24.00,
+        stock:18,
         urlImage:"./assets/img/featured3.png",
     }
 ]
@@ -28,7 +28,7 @@ window.addEventListener("load",function (){
     
     setTimeout(()=>{
         loading.style.display="none";
-    },1500);
+    },1);
 })
 
 const iconMenu = document.querySelector(".bx-grid-alt");
@@ -42,6 +42,7 @@ const icontCart = document.querySelector(".bag");
 const contentCartShop = document.querySelector(".contentCartShop");
 const countBag = document.querySelector(".count__bag");
 const navbarIcons= document.querySelector(".navbar__icons");
+const iconToggle = document.querySelector(".iconToggle ");
 let objCartShop={};
 
 function addClothes(idClothe){
@@ -66,38 +67,55 @@ function countProduct(){
 }
 function printTotal(){
     const arrayCartShop = Object.values(objCartShop);
-if(!arrayCartShop.length) return (contentCartShopTotal.innerHTML= `<h3>carrito bacio</h3>`)
-
-let total =arrayCartShop.reduce((acum,curr)=>{
+    if(!arrayCartShop.length) return (contentCartShopTotal.innerHTML= `<div class="cart__item">
+        <h3>0 item</h3>
+        <h3>$0.00</h3>
+        </div>`)
+    let total =arrayCartShop.reduce((acum,curr)=>{
     acum = curr.price * curr.amo;
-    return acum;
-},0);
-contentCartShopTotal.innerHTML=`
-<h3>${total}</h3>
-<button class="btn btn__buy">Comprar</button>
-`;
+        return acum;
+    },0);
+    let suma =arrayCartShop.reduce((acum,curr)=>{
+        acum += curr.amo;
+        return acum;
+    },0);
+    contentCartShopTotal.innerHTML=
+        `<div class="cart__item">
+            <h3> ${suma} item</h3>
+            <h3>${numberToCurrency(total)}</h3>
+        </div>
+        <div class="btn__checkout">
+            <button class="btn2 btn__buy"><i class="bx bxs-check-shield"></i>Checkout</button>
+        </div>
+       `;
 }
+function numberToCurrency (value) {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(value)
+  }
 function printClothes(){
     let html="";
     clothes.forEach(({id, name, price, stock, urlImage})=>{
     const btnBuy =stock
-    ?`<button class="btn btn__add" id="${id}">Agregar</button>`
-    :`<button class="btn"> No disponible</button>`;
-        html +=`
+    ?`<button class="btn__add button__plus" id="${id}">+</button>`
+    :`<button class="btn">No disponible</button>`;
+    html +=`
     <div class="clothes ${name}" >
-    <div class="clothes__img">
-        <img src="${urlImage}" alt="${name}">
-    </div>
-    <div class="clothes__descripcion">
-        <div class="clothes__body">
-            <p class="clothes__price"><strong>$${price}</strong></p> 
-            <p class="clothes__stock" > <strong>| - stock:${stock}</strong></p>
+        <div class="clothes__img">
+            <img src="${urlImage}" alt="${name}">
         </div>
-        <h3>${name}</h3>
-        <div class="clothes__options">
-            ${btnBuy}
-        </div>
-     </div>   
+        <div class="clothes__descripcion">
+            <div class="clothes__body">
+                <p class="clothes__price"><strong>${numberToCurrency(price)}</strong></p> 
+                <p class="clothes__stock" > <strong>| - stock:${stock}</strong></p>
+            </div>
+            <h3>${name}</h3>
+            <div class="clothes__options">
+                ${btnBuy}
+            </div>
+        </div>   
     </div>`
 contentClothes.innerHTML= html
 });
@@ -108,26 +126,38 @@ function printClothesInCart() {
     let html = "";
 
     const arrayCartShop = Object.values(objCartShop);
-
-    arrayCartShop.forEach(({ id, name, price, amo, urlImage }) => {
-        html += `
-            <div class="clothes">
-            <div class="clothes__img">
-                <img src="${urlImage}" alt="${name}">
+ if(arrayCartShop.length>0){
+    arrayCartShop.forEach(({ id, name, price, stock, amo, urlImage }) => {
+    html += `
+    <div class="clothes clothes__cart">
+        <div class="clothes__img clothes__img-cart">
+            <img src="${urlImage}" alt="${name}">
+        </div>
+        <div class="cart__container">
+            
+            <h3>${name}</h3>
+            <div class="cart__stock-price">
+                <p>Stock: ${stock}|</p>
+                <p class="cart__price"><span>${numberToCurrency(price)}</span></p>
             </div>
-            <div class="clothes__body">
-                <h3>${name}</h3>
-                <p><span>$${price}</span> - cant: <strong>${amo}</strong></p>
-            </div>
+            <p class="cart__subtotal">Subtotal:${numberToCurrency(price*amo)}</p>
             <div class="clothes__options">
                 <button class="btn btn__rest" id="${id}">-</button>
+                <div class="units__cart">  ${amo} units</div>
                 <button class="btn btn__add" id="${id}">+</button>
-                <button class="btn btn__del" id="${id}">del</button>
+                <i class='bx bx-trash-alt btn__del' id="${id}"></i>
             </div>
-        </div>
-        `;
-    });
-
+        </div>   
+    </div>
+    `;
+    });}else{
+    html += `
+    <div class="cart__empty">
+      <img src="assets/img/empty-cart.png" alt="empty cart">
+      <h2>Your cart is empty</h2>
+      <p>You can add items to your cart by clicking on the "+" button on the product page.</p>
+    </div>`
+}
     contentCartShopItems.innerHTML = html;
     printTotal();
     countProduct();
@@ -170,6 +200,7 @@ contentCartShopItems.addEventListener("click",(m)=>{
 }) 
 icontCart.addEventListener("click",()=>{
     contentCartShop.classList.toggle("contentCartShop__show");
+    printClothesInCart();
 })   
 
 contentCartShopTotal.addEventListener("click",(e)=>{
@@ -217,7 +248,26 @@ iconMenu.addEventListener("click", function () {
 });
 
 
+iconToggle.addEventListener("click", () => {
 
+
+    document.body.classList.toggle("darkmode");
+    iconToggle.classList.toggle("bxs-sun");
+
+    if (localStorage.getItem("darkTheme")) {
+        localStorage.removeItem("darkTheme");
+    } else {
+        localStorage.setItem("darkTheme", "true");
+    }
+});
+
+if (localStorage.getItem("darkTheme")) {
+    document.body.classList.add("darkmode");
+    iconToggle.classList.add("bxs-sun");
+} else {
+    document.body.classList.remove("darkmode");
+    iconToggle.classList.remove("bxs-sun");
+}
 
 
 
